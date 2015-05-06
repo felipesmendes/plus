@@ -16,8 +16,6 @@ Link in your default template the js file
 
 ## Usage
 
-You can either set the theme globally:
-
 ```
 $("#table").plus({'entity':'ModelName'});
 ```
