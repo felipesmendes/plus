@@ -17,10 +17,9 @@
         if(config.add === true){
           $(thead).append($(config.controls));
         }
-        clickI = 0;
         table.on("click","#adicionar",function(){
           var rows = tbody.find('tr').length;
-          tbody.find('tr:last').clone().appendTo(tbody);
+          tbody.find('tr:first').clone().appendTo(tbody);
           var inputs = tbody.find('tr:last').find("input");
           inputs.each(function(i,element){
             var name = $(element).attr('name');
@@ -29,18 +28,16 @@
             if(id != "remover"){
               $(element).attr("name",config.entity+"["+rows+"]["+sliceName[1]+"]");
               $(element).val('');
-              $(element).attr('id',id+clickI);
+              $(element).attr('id',id+rows);
               if(i == inputs.length-1){
                 $(element).parent().parent().parent().append("<td>"+config.remove+"</td>");
               }
             }
           });
-          clickI++;
         });
 
         table.on("click","#remover",function(){
           $(this).closest("tr").remove();
-          clickI--;
         });
     };
 
