@@ -6,6 +6,7 @@
             'expression': /\[(\w+)\]$/,///\[([^]]+)\]$/,
             'message':'Você deve ter pelo menos 1 registro',
             'remove':'<input id="remover" type="button" value="&nbsp;-&nbsp;" title="Remover"/>',
+            'add' : false,
             'controls': '<tr><td><input id="adicionar" type="button" value="&nbsp;+&nbsp;" title="Adicionar" /></td></tr>'
         };
         if (settings){$.extend(config, settings);}
@@ -13,7 +14,9 @@
         var thead = $(this).find('thead');
         var tbody = $(this).find('tbody');
 
-        $(thead).append($(config.controls));
+        if(config.add === true){
+          $(thead).append($(config.controls));
+        }
 
         table.on("click","#adicionar",function(){
           var rows = tbody.find('tr').length;
@@ -26,8 +29,9 @@
             if(id != "remover"){
               $(element).attr("name",config.entity+"["+rows+"]["+sliceName[1]+"]");
               $(element).val('');
+              $(element).attr('id',id+i);
               if(i == inputs.length-1){
-                $(element).parent().append($(config.remove));
+                $(element).parent().parent().parent().append("<td>"+$(config.remove)+"</td>");
               }
             }
           });
@@ -39,4 +43,3 @@
     };
 
 })(jQuery);
-
