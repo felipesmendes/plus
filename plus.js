@@ -1,4 +1,4 @@
-(function($){
+  (function($){
     $.fn.plus = function(settings){
 
         var config = {
@@ -17,7 +17,7 @@
         if(config.add === true){
           $(thead).append($(config.controls));
         }
-
+        clickI = 0;
         table.on("click","#adicionar",function(){
           var rows = tbody.find('tr').length;
           tbody.find('tr:last').clone().appendTo(tbody);
@@ -29,16 +29,18 @@
             if(id != "remover"){
               $(element).attr("name",config.entity+"["+rows+"]["+sliceName[1]+"]");
               $(element).val('');
-              $(element).attr('id',id+i);
+              $(element).attr('id',id+clickI);
               if(i == inputs.length-1){
-                $(element).parent().parent().parent().append("<td>"+$(config.remove)+"</td>");
+                $(element).parent().parent().parent().append("<td>"+config.remove+"</td>");
               }
             }
           });
+          clickI++;
         });
 
         table.on("click","#remover",function(){
           $(this).closest("tr").remove();
+          clickI--;
         });
     };
 
