@@ -5,7 +5,7 @@
 Link in your default template the js file
 ### CakePHP
 ```
-<?= $this->Html->script("jquery.dinamicform");?>
+<?= $this->Html->script("jquery.plus");?>
 ```
 
 ### Html
@@ -15,8 +15,6 @@ Link in your default template the js file
 
 
 ## Usage
-
-You can either set the theme globally:
 
 ```
 $("#table").plus({'entity':'ModelName'});
