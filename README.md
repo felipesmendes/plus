@@ -15,6 +15,17 @@ Link in your default template the js file
 
 
 ## Usage
+```
+<table>
+	<thead>
+
+	</thead>
+	<tbody>
+
+	</tbody>
+</table>
+
+```
 
 ```
 $("#table").plus({'entity':'ModelName'});

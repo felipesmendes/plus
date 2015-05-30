@@ -1,5 +1,5 @@
   (function($){
-    $.fn.plus = function(settings){
+    $.fn.plus = function(settings,callback){
 
         var config = {
             'entity': '',
@@ -34,10 +34,12 @@
               }
             }
           });
+          callback();
         });
 
         table.on("click","#remover",function(){
           $(this).closest("tr").remove();
+          callback();
         });
     };
 
